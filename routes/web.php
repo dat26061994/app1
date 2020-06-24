@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Events\WebHooks;
+use Illuminate\Http\Request;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,11 +14,16 @@ use App\Events\WebHooks;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+    $websiteId = isset($request["website_id"]) ? $request["website_id"] : "";
+    return view('welcome',['websiteId' => $websiteId]);
+});
+
+Route::get('/403', function () {
+    return view('403');
 });
 
 Route::post('/webhooks', 'WebHookController@index');
-Route::get('/webhooks', 'WebHookController@create');
+Route::post('/products', 'WebHookController@create');
 
 Route::get('/{any}', 'WebHookController@index')->where('any', '.*');

@@ -1914,7 +1914,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      product: {
+        'visibility': 'public'
+      }
+    };
+  },
+  methods: {
+    createProduct: function createProduct() {
+      axios.post("/products", this.product).then(function (response) {})["catch"](function (e) {});
+    }
+  }
+});
 
 /***/ }),
 
@@ -1934,7 +1958,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'app'
+  name: 'app',
+  props: ['counter'],
+  data: function data() {
+    return {};
+  },
+  created: function created() {
+    console.log(this.counter);
+  }
 });
 
 /***/ }),
@@ -19539,6 +19570,111 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.product.title,
+          expression: "product.title"
+        }
+      ],
+      attrs: { type: "text", placeholder: "Title" },
+      domProps: { value: _vm.product.title },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.$set(_vm.product, "title", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("textarea", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.product.content,
+          expression: "product.content"
+        }
+      ],
+      attrs: { name: "content", id: "", cols: "30", rows: "10" },
+      domProps: { value: _vm.product.content },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.$set(_vm.product, "content", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("textarea", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.product.description,
+          expression: "product.description"
+        }
+      ],
+      attrs: { name: "description", id: "", cols: "30", rows: "10" },
+      domProps: { value: _vm.product.description },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.$set(_vm.product, "description", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.product.price,
+          expression: "product.price"
+        }
+      ],
+      attrs: { type: "number", placeholder: "price" },
+      domProps: { value: _vm.product.price },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.$set(_vm.product, "price", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
+    _c("input", {
+      directives: [
+        {
+          name: "model",
+          rawName: "v-model",
+          value: _vm.product.compare_at_price,
+          expression: "product.compare_at_price"
+        }
+      ],
+      attrs: { type: "number", placeholder: "compare_at_price" },
+      domProps: { value: _vm.product.compare_at_price },
+      on: {
+        input: function($event) {
+          if ($event.target.composing) {
+            return
+          }
+          _vm.$set(_vm.product, "compare_at_price", $event.target.value)
+        }
+      }
+    }),
+    _vm._v(" "),
     _c(
       "button",
       {
@@ -34784,11 +34920,11 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var _views_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/App */ "./resources/js/views/App.vue");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -34796,16 +34932,25 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_3__["default"]({
-  routes: _router__WEBPACK_IMPORTED_MODULE_2__["default"]
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]);
+window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'; // further down the file...
+
+var token = document.head.querySelector('meta[name="csrf-token"]');
+
+if (token) {
+  window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+} else {
+  console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
+}
+
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_2__["default"]({
+  routes: _router__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
-new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
+vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('app', _views_App__WEBPACK_IMPORTED_MODULE_3__["default"]);
+new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
   el: "#app",
-  router: router,
-  render: function render(h) {
-    return h(_views_App__WEBPACK_IMPORTED_MODULE_0__["default"]);
-  }
+  router: router // render: h => h(App)
+
 });
 
 /***/ }),
@@ -34929,7 +35074,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [{
   path: '/',
-  component: _components_Example__WEBPACK_IMPORTED_MODULE_2__["default"]
+  component: _components_Example__WEBPACK_IMPORTED_MODULE_2__["default"],
+  props: true
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -35022,8 +35168,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\demo-ngrok\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\demo-ngrok\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\app1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\app1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
